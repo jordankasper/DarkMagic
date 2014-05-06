@@ -83,3 +83,4 @@ production:
   database: DarkMagic_production
   username: DarkMagic
   password: <%= ENV['DARKMAGIC_DATABASE_PASSWORD'] %>
+  
