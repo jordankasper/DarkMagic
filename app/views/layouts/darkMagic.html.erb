@@ -52,15 +52,18 @@
               <li class="active"><%= link_to "Home", "#"  %></li>
               <li><%= link_to "Decks", "#"  %></li>
               <li><%= link_to "Draft Simulator", "#"  %></li>
-              <li><%= link_to "Card Gallary", "#"  %></li>
+              <li><%= link_to "Card Gallery", "#"  %></li>
             </ul>
-            <%= form_tag sessions_path do %>
-                <%= text_field_tag :email, params[:email] %>
-                <%= password_field_tag :password %>
-                <%= button_tag(:type => 'submit', :class => 'btn btn-success') do %> Log In<% end %>
-            <% end %>
+            <div>
+                <%= form_tag sessions_path do %>
+                  <%= text_field_tag :email, params[:email] %>
+                  <%= password_field_tag :password %>
+                  <%= button_tag(:type => 'submit', :class => 'btn btn-success') do %> Log In<% end %>
+                <% end %>
+            </div>
 
           </div><!--/.nav-collapse -->
+
         </div>
       </div>
     </div>
