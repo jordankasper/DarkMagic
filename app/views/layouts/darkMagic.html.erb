@@ -49,12 +49,17 @@
           <a class="brand" href="#">Dark Magic Database</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li class="active"><%= link_to "Home", "/path1"  %></li>
-              <li><%= link_to "Decks", "/path2"  %></li>
-              <li><%= link_to "Draft Simulator", "/path3"  %></li>
-              <li><%= link_to "Card Gallary", "/path4"  %></li>
-
+              <li class="active"><%= link_to "Home", "#"  %></li>
+              <li><%= link_to "Decks", "#"  %></li>
+              <li><%= link_to "Draft Simulator", "#"  %></li>
+              <li><%= link_to "Card Gallary", "#"  %></li>
             </ul>
+            <%= form_tag sessions_path do %>
+                <%= text_field_tag :email, params[:email] %>
+                <%= password_field_tag :password %>
+                <%= button_tag(:type => 'submit', :class => 'btn btn-success') do %> Log In<% end %>
+            <% end %>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -62,7 +67,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-    
+      
         <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
