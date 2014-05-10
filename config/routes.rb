@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "dashboard" => "welcome#index", :as => "dashboard"
 
-  get "welcome" => "non_users#new", :as => "welcome"
-
   resources :users
   resources :sessions
   # Example of regular route:
