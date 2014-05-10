@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
@@ -29,9 +28,14 @@ gem 'spring',        group: :development
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+
 gem "sorcery"
+
 gem "json"
 
+gem 'mtgextractor', :git => 'git://github.com/JAndritsch/mtgextractor.git'
+
+gem 'awesome_print', :require => 'ap'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
