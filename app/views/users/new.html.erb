@@ -1,25 +1,41 @@
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="row-fluid">
+    <div class="dialog">
+        <div class="block">
+            <p class="block-heading">Sign Up</p>
+            <div class="block-body">
+
+              <%= form_for @user do |f| %>
+                <% if @user.errors.any? %>
+                  <div class="error_messages">
+                    <h2>Form is invalid</h2>
+                    <ul>
+                      <% for message in @user.errors.full_messages %>
+                        <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.text_field :email %>
+                </div>
+                <div class="field">
+                  <%= f.label :password %>
+                  <%= f.password_field :password %>
+                </div>
+                <div class="field">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation %>
+                </div>
+                    <label class="remember-me"><input type="checkbox"> I agree with the <a href="terms-and-conditions.html">Terms and Conditions</a></label>
+                    <br>
+                    <div class="clearfix"></div>     
+
+                <div class="actions"><%= f.submit %></div>
+              <% end %>  
+
+            </div>
+        </div>
+        <p><a href="privacy-policy.html">Privacy Policy</a></p>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
+</div>

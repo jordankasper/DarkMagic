@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "The Dark Magic Database" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Tolarian Academy" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -38,58 +38,78 @@
   </head>
   <body>
 
-        <div class="navbar navbar-fluid-top">
-          <div class="navbar-inner">
-            <div class="container-fluid">
-              <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="brand" href="#">The Dark Magic Database</a>
-              <div class="nav-collapse collapse">
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">Deck Building</a></li>
-                  <li><a href="#contact">Draft Simulator</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Card Gallery <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li class="nav-header">Nav header</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                    <span class="navbar-form pull-right">
-                        <%= form_tag sessions_path, :style => "margin: 0;" do %>
-                            <%= text_field_tag :email, params[:email], class: 'span2', placeholder: "Username" %>
-                            <%= password_field_tag :password, params[:password], class: 'span2', placeholder: "Password" %>
-                            <%= submit_tag "Log in", class: 'btn' %>
+           <div class="navbar">
+        <div class="navbar-inner">
+                <ul class="nav pull-right">
+                    <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li>
+                    <li id="fat-menu" class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-user"></i>  <% if current_user %> <%= current_user.email %> <%end %>
+                            <i class="icon-caret-down"></i>
+                        </a>
 
-                        <% end %>
-                    </span>
-              </div><!--/.nav-collapse -->
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#">My Account</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
+                            <li class="divider visible-phone"></li>
+                            <li><%if current_user %><%= link_to "Log out", logout_path %><% end %></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="brand" href="index.html"><span class="first">Tolarian Academy Database</span></a>
+        </div>
+    </div>
+
+
+    <div class="sidebar-nav">
+        <form class="search form-inline">
+            <input type="text" placeholder="Card Search...">
+        </form>
+
+        <a href="help.html" class="nav-header" ><i class="icon-align-justify"></i>Decks</a>
+        <a href="help.html" class="nav-header" ><i class="icon-tasks"></i>Draft Simulator</a>
+        <a href="help.html" class="nav-header" ><i class="icon-picture"></i>Card Gallery</a>
+        <a href="help.html" class="nav-header" ><i class="icon-fire"></i>Planswalker Points</a>
+
+        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>Account</a>
+        <ul id="accounts-menu" class="nav nav-list collapse">
+            <%=menu_item('Sign In')%>
+            <%=menu_item('Sign Up')%>
+            <%=menu_item('Reset Password')%>
+        </ul>
+
+        <a href="help.html" class="nav-header" ><i class="icon-question-sign"></i>Help</a>
+    </div>
+
+
+
+    <div class="content">
+        <div class="header">
+            
+        <h1 class="page-title"><% if current_user %> <%= current_user.email %> <% end %> Dashboard</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    <%= yield %>
+
             </div>
+        </div>
+    </div>
+
+
+
+
+
           </div>
         </div>
-
-
-
-      <div class="container-fluid">
-            <div class="row-fluid">
-            
-              <div class="span12">
-                <%= bootstrap_flash %>
-                <%= yield %>
-              </div>
-            </div><!--/row-->
-
-          </div> <!-- /container -->
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
 
   </body>
 </html>

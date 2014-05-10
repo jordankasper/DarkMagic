@@ -1,16 +1,1 @@
-<div class ="container"
-	<div class="bs-docs-example">
-	   <div class="hero-unit">
-	       	<h1>Welcome to Dark Magic!</h1></br>
-	        <p>This is a database dedicated to Magic deck building and anylizing, booster draft simulation and card gallery.</p>
-
-	        <% if current_user %>
-	            Logged in as <%= current_user.email %>.
-	            <%= link_to "Log out", logout_path %>
-          	<% else %>
-	            <%= link_to "Sign up", signup_path %> or
-	            <%= link_to "log in", login_path %>.
-	          <% end %>
-	    </div>
-	</div>
-</div>
+<h3>Welcome to your Dashboard!</h3>
