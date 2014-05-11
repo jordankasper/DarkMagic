@@ -17,15 +17,15 @@
                 <% end %>
                 <div class="field">
                   <%= f.label :email %>
-                  <%= f.text_field :email %>
+                  <%= f.text_field :email, class: 'span12', placeholder: "Username" %>
                 </div>
                 <div class="field">
                   <%= f.label :password %>
-                  <%= f.password_field :password %>
+                  <%= f.password_field :password, class: 'span12', placeholder: "Password" %>
                 </div>
                 <div class="field">
                   <%= f.label :password_confirmation %>
-                  <%= f.password_field :password_confirmation %>
+                  <%= f.password_field :password_confirmation, class: 'span12', placeholder: "Password"  %>
                 </div>
                     <label class="remember-me"><input type="checkbox"> I agree with the <a href="terms-and-conditions.html">Terms and Conditions</a></label>
                     <br>
@@ -39,6 +39,6 @@
 
             </div>
         </div>
-        <p><a href="privacy-policy.html">Privacy Policy</a></p>
+        <center><p><a href="privacy-policy.html">Privacy Policy</a></p></center>
     </div>
 </div>
