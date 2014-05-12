@@ -1,0 +1,27 @@
+<center><H2> CARD GALLERY </h2 ></center>
+
+	<% @sets.each do |set| %>
+
+	<div>
+		<h3><span><%= set.name %></span></h3>
+	</div>
+	<% @cardsInSet.each do |card| %>
+
+	<div>
+		<span><b><%= link_to(card.name, card.gatherer_image_url) %></b></span>
+		<br>
+		<span><i>Oracle Text:</i> <%= card.oracle_text %></span>
+		<br>
+		<span><i>Rarity:</i> <%= card.rarity %></span>
+		<br>
+		<span><i>Mana Cost:</i> <%= card.mana_cost %></span>
+		<br>
+		<span><i>Card Image:</i> <%= card.gatherer_image_url %></span>
+
+	</div>
+
+	<br>
+
+<% end %>
+
+<% end %>

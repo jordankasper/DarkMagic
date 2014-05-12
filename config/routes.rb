@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "dashboard" => "welcome#index", :as => "dashboard"
+  get "gallery" => "card_galleries#index", :as => "gallery"
+
 
   resources :users
   resources :sessions
