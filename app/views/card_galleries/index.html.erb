@@ -1,12 +1,15 @@
 <center><H2> CARD GALLERY </h2 ></center>
 
+		
 	<% @sets.each do |set| %>
+		
 
 		<div>
 			<h3><%= set.name %></h3>
 		</div>
 
-		<table  class="table table-striped">
+		<table  class="table table-striped posts">
+			<thead>
 			<tr>
 				<th class="span2">Name</th>
 				<th class="span4">Oracle Text</th>
@@ -15,28 +18,28 @@
 				<th class="span3">Mana Cost</th>
 				<th class="span1">Converted Mana Cost</th>
 			</tr>
+		</thead>
+		<% @cards_in_set = set.cards %>
 
-		<% @cardsInSet.each do |card| %>
+		<% @cards_in_set.each do |card| %>
 
+			<tbody class="page">
 			<tr>
 
-				<td class="span1"><a class = "screenshot" rel="<%= card.gatherer_image_url %>" href= "<%= card.gatherer_image_url %>"> <%= card.name %> </a></td>
+				<td class="span1"><a class = "screenshot" rel="<%= card.gatherer_image_url %>" href= "<%= card.gatherer_url %>"> <%= card.name %> </a></td>
 
 				<td class="span5"><%= card.oracle_text %></td>
 				
 				<td class="span2"><%= card.rarity %></td>
-
-				<td class="span2"><%= MtgType %></td>
 			
+				<td class="span2"><%= card.mtg_types.collect{|type|type.name} %></td>
+
 				<td class="span1"><%= card.mana_cost %></td>
 
 				<td class="span3"><%= card.converted_cost %></td>
 
-
-			
 			</tr>
-
+			</tbody>
 		<% end %>
 		</table>
-
 <% end %>
