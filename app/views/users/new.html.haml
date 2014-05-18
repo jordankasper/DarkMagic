@@ -1,0 +1,35 @@
+.row-fluid
+  .dialog
+    .block
+      %p.block-heading Sign Up
+      .block-body
+        = form_for @user do |f|
+          - if @user.errors.any?
+            .error_messages
+              %h2 Form is invalid
+              %ul
+                - for message in @user.errors.full_messages
+                  %li= message
+          .field
+            = f.label :email
+            = f.text_field :email, class: 'span12', placeholder: "Username"
+          .field
+            = f.label :password
+            = f.password_field :password, class: 'span12', placeholder: "Password"
+          .field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'span12', placeholder: "Password"
+          %label.remember-me
+            %input{type: "checkbox"}/
+            I agree with the
+            %a{href: "terms-and-conditions.html"} Terms and Conditions
+          %br/
+          .clearfix
+          .actions= f.submit
+          %br/
+          %center
+            %div
+              Already have an account? #{link_to 'Log In', login_path}
+    %center
+      %p
+        %a{href: "privacy-policy.html"} Privacy Policy

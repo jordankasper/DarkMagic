@@ -1,0 +1,20 @@
+.row-fluid
+  .dialog
+    .block
+      %p.block-heading Sign In
+      .block-body
+        = form_tag sessions_path do
+          %div
+            .field
+              = label_tag :email
+              = text_field_tag :email, params[:email], class: 'span12', placeholder: "Username"
+            .field
+              = label_tag :password
+              = password_field_tag :password, params[:password], class: 'span12', placeholder: "Password"
+            .field
+              = check_box_tag :remember_me, params[:remember_me]
+              = label_tag :remember_me
+            .actions= submit_tag "Log in"
+        %center
+          %div
+            Dont have an account? #{link_to 'Sign Up', signup_path}

@@ -1,0 +1,28 @@
+%center
+  %h2 CARD GALLERY
+- @sets.each do |set|
+  %div
+    %h3= set.name
+  %table.table.table-striped.posts
+    %thead
+      %tr
+        %th.span2 Name
+        %th.span4 Oracle Text
+        %th.span1 Rarity
+        %th.span2 Type
+        %th.span3 Mana Cost
+        %th.span1 Converted Mana Cost
+
+    - @cards_in_set = set.cards.includes(:mtg_types)
+    - @cards_in_set.each do |card|
+
+      %tbody.page
+        %tr
+          %td.span1
+            %a.screenshot{href: card.gatherer_url, rel: card.gatherer_image_url}
+              = card.name
+          %td.span5= card.oracle_text
+          %td.span2= card.rarity
+          %td.span2= card.mtg_types.collect{|type|type.name}
+          %td.span1= card.mana_cost
+          %td.span3= card.converted_cost

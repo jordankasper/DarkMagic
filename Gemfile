@@ -40,3 +40,5 @@ gem 'awesome_print', :require => 'ap'
 gem 'kaminari'
 
 gem 'haml', '~> 4.0.5'
+
+gem "will_paginate", "~> 3.0.4" 

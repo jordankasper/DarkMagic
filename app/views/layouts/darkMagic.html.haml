@@ -1,0 +1,79 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Tolarian Academy"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+
+
+  %body
+    .navbar
+      .navbar-inner
+        %ul.nav.pull-right
+          %li
+            %a.hidden-phone.visible-tablet.visible-desktop{href: "#", role: "button"} Settings
+          %li#fat-menu.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", role: "button"}
+              %i.icon-user
+              - if current_user
+                = current_user.email
+              %i.icon-caret-down
+            %ul.dropdown-menu
+              %li
+                %a{href: "#", tabindex: "-1"} My Account
+              %li.divider
+              %li
+                %a.visible-phone{href: "#", tabindex: "-1"} Settings
+              %li.divider.visible-phone
+              %li
+                - if current_user
+                  = link_to "Log out", logout_path
+        %a.brand{href: "index.html"}
+          %span.first Tolarian Academy Database
+
+          
+    .sidebar-nav
+      %form.search.form-inline
+        %input{placeholder: "Card Search...", type: "text"}/
+      %a.nav-header{href: "help.html"}
+        %i.icon-align-justify>
+        Decks
+      %a.nav-header{href: "help.html"}
+        %i.icon-tasks>
+        Draft Simulator
+      = link_to "  Card Gallery", gallery_path, class: "nav-header icon-picture"
+      %a.nav-header{href: "help.html"}
+        %i.icon-fire>
+        Planswalker Points
+      %a.nav-header{"data-toggle" => "collapse", href: "#accounts-menu"}
+        %i.icon-briefcase>
+        Account
+      %ul#accounts-menu.nav.nav-list.collapse
+        = menu_item('Sign In')
+        = link_to "Log out", logout_path
+        = menu_item('Reset Password')
+      %a.nav-header{href: "help.html"}
+        %i.icon-question-sign>
+        Help
+    .content
+      .header
+        %h1.page-title
+          - if current_user
+            = current_user.email
+          Dashboard
+      .container-fluid
+        .row-fluid
+          = yield
+
+
+    %script{src: "lib/bootstrap/js/bootstrap.js"}
+    :javascript
+      $("[rel=tooltip]").tooltip();
+      $(function() {
+          $('.demo-cancel-click').click(function(){return false;});
+      });
